@@ -5,6 +5,14 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// ER図生成用途で追加
+generator erd {
+  provider                  = "prisma-erd-generator"
+  theme                     = "forest"
+  output                    = "ERD.md"
+  includeRelationFromFields = true
+}
+
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
@@ -25,7 +33,7 @@ model Post {
   author     User      @relation(fields: [authorId], references: [id])
   authorId   Int
   comments   Comment[]
-  categories category  @relation(fields: [categoryId], references: [id])
+  categories Category  @relation(fields: [categoryId], references: [id])
   categoryId Int
 }
 
@@ -37,16 +45,8 @@ model Comment {
   postId     Int
 }
 
-model category {
+model Category {
   id    Int    @id @default(autoincrement())
-  name  String
+  name  String @unique
   posts Post[]
-}
-
-// ER図生成用途で追加
-generator erd {
-  provider                  = "prisma-erd-generator"
-  theme                     = "forest"
-  output                    = "ERD.md"
-  includeRelationFromFields = true
 }

@@ -26,7 +26,7 @@ erDiagram
     }
   
 
-  "category" {
+  "Category" {
     Int id "🗝️"
     String name 
     }
@@ -34,7 +34,7 @@ erDiagram
     "User" o{--}o "Post" : "posts"
     "Post" o|--|| "User" : "author"
     "Post" o{--}o "Comment" : "comments"
-    "Post" o|--|| "category" : "categories"
+    "Post" o|--|| "Category" : "categories"
     "Comment" o|--|| "Post" : "posts"
-    "category" o{--}o "Post" : "posts"
+    "Category" o{--}o "Post" : "posts"
 ```
