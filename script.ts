@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function main() {
-  const keyword = 'aaa'
+  const keyword = 'aaaa'
   const email = 'bob@prisma.io'
   const name = 'bob'
   
